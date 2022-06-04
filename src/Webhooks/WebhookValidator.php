@@ -9,7 +9,6 @@ use TONYLABS\Shopify\Support\VerifiesWebhooks;
 class WebhookValidator
 {
     use VerifiesWebhooks;
-
     private SecretProvider $secretProvider;
 
     public function __construct(SecretProvider $secretProvider)
