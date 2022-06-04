@@ -9,11 +9,8 @@ class ValidationException extends \Exception
     public function __construct(array $errors = [])
     {
         $this->errors = $errors;
-
         parent::__construct(
-            config('shopify.exceptions.include_validation_errors', false)
-            ? 'Data validation failure caused by: '.json_encode($this->errors)
-            : 'Data validation failed'
+            env('SHOPIFY_TOGGLE_VALIDATION_ERROR', false) ? 'Data validation error: '.json_encode($this->errors) : 'Data validation failed'
         );
     }
 }
