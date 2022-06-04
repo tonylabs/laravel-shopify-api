@@ -69,7 +69,7 @@ class Shopify
 
     public function getHttpClient(): PendingRequest
     {
-        return $this->httpClient ??= Http::baseUrl($this->getBaseUrl())->withBasicAuth($this->api_key, $this->api_token);
+        return Http::baseUrl($this->getBaseUrl())->withBasicAuth($this->api_key, $this->api_token);
     }
 
     public function graphQl(): PendingRequest
@@ -92,9 +92,8 @@ class Shopify
     {
         $this->api_key = $api_key;
         $this->api_token = $api_token;
-        $this->domain = $domain;
         $this->api_version = $api_version;
-        $this->httpClient = null;
+        $this->domain = $domain;
         return $this;
     }
 }
