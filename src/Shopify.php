@@ -57,9 +57,9 @@ class Shopify
 
     protected ?PendingRequest $httpClient = null;
 
-    public function __construct(string $api_key, string $api_token, string $domain, string $api_version)
+    public function __construct(string $api_key, string $api_token, string $api_version, string $domain)
     {
-        $this->withCredentials($api_key, $api_token, $domain, $api_version);
+        $this->withCredentials($api_key, $api_token, $api_version,  $domain);
     }
 
     public function paginator(Collection $results): Paginator
@@ -88,7 +88,7 @@ class Shopify
         return $this;
     }
 
-    public function withCredentials(string $api_key, string $api_token, string $domain, string $api_version): self
+    public function withCredentials(string $api_key, string $api_token, string $api_version, string $domain): self
     {
         $this->api_key = $api_key;
         $this->api_token = $api_token;
